@@ -14,6 +14,7 @@ import {
   Target,
   ArrowRight,
   Star,
+  ArrowUp,
 } from "lucide-react";
 import {
   SiDocker,
@@ -103,22 +104,37 @@ const projects: Project[] = [
 
 const App: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVisibleScrollTop, setIsVisibleScrollTop] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsVisibleScrollTop(true);
+      } else {
+        setIsVisibleScrollTop(false);
+      }
+    };
 
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
+    window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    setIsVisibleScrollTop(false);
   };
 
   return (
@@ -287,7 +303,7 @@ const App: React.FC = () => {
                 Technical Stack
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                {skills.technical.map((skill, i) => (
+                {skills.technical.map((skill) => (
                   <div
                     key={skill.name}
                     className="group p-4 bg-gradient-to-r from-white/5 to-white/10 hover:from-white/10 hover:to-white/15 rounded-2xl border border-white/10 cursor-pointer transition-all duration-300 hover:scale-105"
@@ -314,7 +330,7 @@ const App: React.FC = () => {
                 Soft Skills
               </h3>
               <div className="space-y-4">
-                {skills.soft.map((skill, i) => (
+                {skills.soft.map((skill) => (
                   <div
                     key={skill.name}
                     className="flex items-center gap-4 p-4 bg-gradient-to-r from-white/5 to-white/10 rounded-2xl border border-white/10 hover:from-white/10 hover:to-white/15 transition-all duration-300"
@@ -385,7 +401,7 @@ const App: React.FC = () => {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, i) => (
+            {projects.map((project) => (
               <div
                 key={project.name}
                 className={`group relative bg-gradient-to-br from-white/5 to-white/10 rounded-3xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/10 ${
@@ -621,6 +637,15 @@ const App: React.FC = () => {
             </div>
           </div>
         </div>
+        {/* Scroll to Top Button */}
+        {isVisibleScrollTop && (
+          <button
+            onClick={() => scrollToSection()}
+            className="fixed bottom-6 right-6 bg-purple-600 hover:bg-purple-500 text-white p-3 rounded-full shadow-lg transition-transform transform hover:scale-110 z-50"
+          >
+            <ArrowUp className="w-5 h-5" />
+          </button>
+        )}
       </footer>
     </main>
   );
