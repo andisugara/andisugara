@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import bangkitImg from "./assets/bangkit.jpg";
+import webinarPemalang from "./assets/sosialisasi_pemalang.jpg";
+import androidIntermediate from "./assets/android_intermediate.jpg";
+import penerapanMl from "./assets/penerapan_ml.jpg";
+import flutterTravelApp from "./assets/flutter_travel_app.jpg";
+import flutterModernUI from "./assets/flutter_modern_ui.png";
+import reactNativeFullstack from "./assets/react_native.jpg";
 import {
   Github,
   Linkedin,
@@ -15,6 +21,7 @@ import {
   ArrowRight,
   Star,
   ArrowUp,
+  Lock,
 } from "lucide-react";
 import {
   SiDocker,
@@ -76,29 +83,114 @@ const skills = {
   ],
 };
 
-const projects: Project[] = [
+const projects = [
   {
-    name: "Dev Dashboard",
-    desc: "A performance dashboard for developers with real-time insights and analytics.",
-    stack: ["React", "Node.js", "Chart.js"],
-    link: "https://github.com/andisugara",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop",
+    name: "Flight Clearance Information System",
+    desc: "Led technical development of a comprehensive flight clearance management system for the Ministry of Foreign Affairs, streamlining diplomatic flight operations and enhancing inter-agency coordination.",
+    stack: ["Laravel", "PHP", "SQL Server"],
+    link: "#", // Internal project - no public link
+    img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=200&fit=crop",
     featured: true,
+    company: "Kabayan Consulting",
+    role: "Technical Leader",
+    status: "Internal Project",
+    year: "2024",
   },
   {
-    name: "Mobile Wallet App",
-    desc: "A fintech wallet app built with Flutter and Firebase for seamless transactions.",
-    stack: ["Flutter", "Firebase"],
-    link: "https://github.com/andisugara/wallet-app",
-    img: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=200&fit=crop",
+    name: "Ministry Portal Management System",
+    desc: "Developed a sophisticated management portal for the Indonesian Ministry of Foreign Affairs, facilitating efficient document processing and administrative workflows for diplomatic operations.",
+    stack: ["React", "TypeScript", "Material-UI", "Express.js", "MongoDB"],
+    link: "#", // Internal project - no public link
+    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop",
     featured: true,
+    company: "Kabayan Consulting",
+    role: "Frontend Developer",
+    status: "Internal Project",
+    year: "2023",
   },
   {
-    name: "Portfolio Generator",
-    desc: "CLI tool to generate sleek developer portfolios with customizable themes.",
-    stack: ["Python", "Markdown"],
-    link: "https://github.com/andisugara/portfolio-gen",
-    img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop",
+    name: "Ilmate Management Portal",
+    desc: "Built a comprehensive management platform designed to streamline organizational processes and enhance operational efficiency through intuitive user interfaces and robust backend integration.",
+    stack: ["React", "Redux", "Tailwind CSS", "Node.js", "MySQL"],
+    link: "#", // Internal project - no public link
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop",
+    featured: false,
+    company: "Kabayan Consulting",
+    role: "Frontend Developer",
+    status: "Internal Project",
+    year: "2023",
+  },
+  {
+    name: "Belanja Ikan Marketplace",
+    desc: "Developed a specialized e-commerce platform connecting fish vendors with customers, featuring real-time inventory management, secure payment integration, and location-based vendor discovery.",
+    stack: ["PHP", "Laravel", "MySQL", "Bootstrap", "JavaScript"],
+    link: "https://github.com/andisugara", // Replace with actual link if available
+    img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=200&fit=crop",
+    featured: false,
+    company: "House Of Aplysit",
+    role: "Full Stack Developer",
+    status: "Live Project",
+    year: "2020",
+  },
+  {
+    name: "Assessment Center Platform",
+    desc: "Confidential assessment and evaluation system designed for organizational talent management. Features comprehensive reporting and analytics capabilities.",
+    stack: ["React", "Node.js", "Database", "Analytics"],
+    link: "#",
+    img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=200&fit=crop",
+    featured: false,
+    company: "Kabayan Consulting",
+    role: "Frontend Developer",
+    status: "Confidential",
+    year: "2024",
+  },
+  {
+    name: "Inventory Management Application",
+    desc: "Developed a comprehensive inventory management application for PT Tiara Indoprima, enabling efficient tracking and reporting of stock levels and transactions.",
+    stack: ["PHP", "Laravel", "MySQL", "Bootstrap"],
+    link: "#", // Internal project - no public link
+    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop",
+    featured: false,
+    company: "Goldstep Indonesia",
+    role: "Web Developer",
+    status: "Internal Project",
+    year: "2021",
+  },
+  {
+    name: "Hospital Information Management System (SIMRS)",
+    desc: "Built a hospital management system for RS Tiara Sella, streamlining patient records, billing, and operational workflows.",
+    stack: ["PHP", "Laravel", "MySQL", "Bootstrap"],
+    link: "#", // Internal project - no public link
+    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop",
+    featured: false,
+    company: "Goldstep Indonesia",
+    role: "Web Developer",
+    status: "Internal Project",
+    year: "2021",
+  },
+  {
+    name: "Learning Management System",
+    desc: "Developed a learning management system for Universitas Muhammadiyah Tasikmalaya, enabling seamless course management and student engagement.",
+    stack: ["PHP", "Laravel", "MySQL", "Bootstrap"],
+    link: "#", // Internal project - no public link
+    img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=400&h=200&fit=crop",
+    featured: false,
+    company: "Prilude Digital Indonesia",
+    role: "Software Developer",
+    status: "Internal Project",
+    year: "2021",
+  },
+  {
+    name: "Greeny App",
+    desc: "Built an environmental waste management solution to promote sustainable practices and efficient waste tracking.",
+    stack: ["React Native", "Node.js", "MongoDB"],
+    link: "#", // Internal project - no public link
+    img: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=400&h=200&fit=crop",
+    featured: false,
+    company: "Prilude Digital Indonesia",
+    role: "Software Developer",
+    status: "Internal Project",
+    year: "2021",
   },
 ];
 
@@ -362,6 +454,36 @@ const App: React.FC = () => {
                 issuer:
                   "Bangkit Team. supported by Kemendikbudristek, Google, Gojek, Tokopedia, and Traveloka",
               },
+              {
+                name: "Socialization of SPBE Implementation in Pemalang Regency",
+                img: webinarPemalang,
+                issuer: "Kabayan Group",
+              },
+              {
+                name: "Android Intermediate",
+                img: androidIntermediate,
+                issuer: "Dicoding",
+              },
+              {
+                name: "Penerapan Machine Learning di Android",
+                img: penerapanMl,
+                issuer: "Dicoding",
+              },
+              {
+                name: "Flutter 2.0 Build Travel App",
+                img: flutterTravelApp,
+                issuer: "BuildWithAngga",
+              },
+              {
+                name: "Flutter Modern UI Design",
+                img: flutterModernUI,
+                issuer: "BuildWithAngga",
+              },
+              {
+                name: "Fullstack React Native",
+                img: reactNativeFullstack,
+                issuer: "BuildWithAngga",
+              },
             ].map((cert, i) => (
               <div
                 key={i}
@@ -397,7 +519,8 @@ const App: React.FC = () => {
             Featured Projects
           </h2>
           <p className="text-center text-gray-400 mb-12 text-lg">
-            Some of my recent work that I'm proud of
+            A curated selection of professional projects showcasing technical
+            expertise and impact
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -405,18 +528,35 @@ const App: React.FC = () => {
               <div
                 key={project.name}
                 className={`group relative bg-gradient-to-br from-white/5 to-white/10 rounded-3xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/10 ${
-                  project.featured ? "md:col-span-1 lg:col-span-1" : ""
+                  project.featured ? "md:col-span-2 lg:col-span-1" : ""
                 }`}
               >
+                {/* Featured Badge */}
                 {project.featured && (
                   <div className="absolute top-4 right-4 z-10">
-                    <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-2 py-1 rounded-full text-xs font-semibold">
+                    <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-3 py-1 rounded-full text-xs font-semibold">
                       <Star className="w-3 h-3" />
                       Featured
                     </div>
                   </div>
                 )}
 
+                {/* Status Badge */}
+                <div className="absolute top-4 left-4 z-10">
+                  <div
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      project.status === "Live Project"
+                        ? "bg-green-500/20 text-green-400 border border-green-500/30"
+                        : project.status === "Confidential"
+                        ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                        : "bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                    }`}
+                  >
+                    {project.status}
+                  </div>
+                </div>
+
+                {/* Project Image */}
                 <div className="relative overflow-hidden">
                   <img
                     src={project.img}
@@ -426,35 +566,72 @@ const App: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
+                {/* Project Content */}
                 <div className="p-6">
+                  {/* Company & Role */}
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-purple-400 font-medium">
+                      {project.company}
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      {project.year}
+                    </span>
+                  </div>
+
                   <h4 className="text-xl font-bold mb-2 group-hover:text-purple-300 transition-colors">
                     {project.name}
                   </h4>
-                  <p className="text-sm text-gray-300 mb-4 leading-relaxed">
+
+                  <p className="text-xs text-gray-400 mb-2 font-medium">
+                    {project.role}
+                  </p>
+
+                  <p className="text-sm text-gray-300 mb-4 leading-relaxed line-clamp-3">
                     {project.desc}
                   </p>
 
+                  {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-white/10 rounded-full text-xs font-medium border border-white/20"
+                        className="px-3 py-1 bg-white/10 rounded-full text-xs font-medium border border-white/20 hover:bg-white/20 transition-colors"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  <a
-                    href={project.link}
-                    className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium text-sm group-hover:gap-3 transition-all duration-300"
-                  >
-                    View Project
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                  {/* Project Link */}
+                  {project.status !== "Confidential" &&
+                  project.status !== "Internal Project" ? (
+                    <a
+                      href={project.link}
+                      className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium text-sm group-hover:gap-3 transition-all duration-300"
+                    >
+                      View Project
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  ) : (
+                    <div className="inline-flex items-center gap-2 text-gray-500 font-medium text-sm">
+                      <Lock className="w-4 h-4" />
+                      {project.status === "Confidential"
+                        ? "Confidential Project"
+                        : "Internal Use Only"}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Additional Info */}
+          <div className="text-center mt-12">
+            <p className="text-gray-400 text-sm">
+              * Some projects are confidential or for internal use only due to
+              privacy and security requirements. Not all projects are included;
+              this is just a sample selection.
+            </p>
           </div>
         </div>
       </section>
@@ -471,6 +648,7 @@ const App: React.FC = () => {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 to-pink-500" />
 
             <div className="space-y-12">
+              {/* Education */}
               <div className="relative flex items-start gap-8">
                 <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black" />
                 <div className="flex-1 bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
@@ -478,42 +656,195 @@ const App: React.FC = () => {
                     Education
                   </h3>
                   <h4 className="text-lg font-semibold mb-2">
-                    S1 Teknik Informatika – Universitas X
+                    Bachelor of Informatics Engineering – Bandung University of
+                    Technology
                   </h4>
-                  <p className="text-gray-400 mb-3">2021–2026</p>
+                  <p className="text-gray-400 mb-3">
+                    2022–Present (Currently Pursuing Undergraduate Degree)
+                  </p>
+                </div>
+              </div>
+
+              {/* Experience 1 */}
+              <div className="relative flex items-start gap-8">
+                <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black" />
+                <div className="flex-1 bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
+                  <h3 className="text-xl font-bold text-pink-300 mb-2">
+                    Professional Experience
+                  </h3>
+                  <h4 className="text-lg font-semibold">
+                    Frontend Developer at Kabayan Consulting
+                  </h4>
+                  <p className="text-gray-400 mb-4">July 2023–Present</p>
                   <ul className="space-y-2 text-gray-300">
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
-                      Juara 2 LKS Tingkat Provinsi
+                      Developed comprehensive Management Portal for the Ministry
+                      of Foreign Affairs
                     </li>
                     <li className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
-                      Skripsi Terbaik 2026
+                      Built and maintained Ilmate Management Portal system
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Designed and implemented Assessment Center platform for MA
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Led technical development of Flight Clearance Information
+                      System for Ministry of Foreign Affairs
                     </li>
                   </ul>
                 </div>
               </div>
 
+              {/* Experience 2 */}
               <div className="relative flex items-start gap-8">
                 <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black" />
                 <div className="flex-1 bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
                   <h3 className="text-xl font-bold text-pink-300 mb-2">
-                    Experience
+                    Professional Development
                   </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="text-lg font-semibold">
-                        Fullstack Developer @ PT ABC
-                      </h4>
-                      <p className="text-gray-400">2022–2023</p>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold">
-                        Ketua Pramuka – SMA 1 XYZ
-                      </h4>
-                      <p className="text-gray-400">Leadership Role</p>
-                    </div>
-                  </div>
+                  <h4 className="text-lg font-semibold">
+                    Mobile Development Cohort - Bangkit Academy
+                  </h4>
+                  <p className="text-gray-400 mb-2">
+                    <span className="text-purple-300 font-medium">
+                      Powered by
+                    </span>{" "}
+                    Google, GoTo, Tokopedia, Traveloka
+                  </p>
+                  <p className="text-gray-400">August 2024–January 2025</p>
+                </div>
+              </div>
+
+              {/* Experience 3 */}
+              <div className="relative flex items-start gap-8">
+                <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black" />
+                <div className="flex-1 bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
+                  <h3 className="text-xl font-bold text-pink-300 mb-2">
+                    Professional Experience
+                  </h3>
+                  <h4 className="text-lg font-semibold">
+                    Web Developer at Goldstep Indonesia
+                  </h4>
+                  <p className="text-gray-400 mb-4">
+                    October 2020–October 2021
+                  </p>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Developed comprehensive Inventory Management Application
+                      for PT Tiara Indoprima
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Built Hospital Information Management System (SIMRS) for
+                      RS Tiara Sella
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Created internal Currency Converter Application
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Experience 4 */}
+              <div className="relative flex items-start gap-8">
+                <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black" />
+                <div className="flex-1 bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
+                  <h3 className="text-xl font-bold text-pink-300 mb-2">
+                    Professional Experience
+                  </h3>
+                  <h4 className="text-lg font-semibold">
+                    Software Developer at Prilude Digital Indonesia
+                  </h4>
+                  <p className="text-gray-400 mb-4">
+                    October 2020–October 2021
+                  </p>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Developed Learning Management System for Universitas
+                      Muhammadiyah Tasikmalaya
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Built Greeny App - Environmental waste management solution
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Created DITSY Factory - End-to-end garment production
+                      management system
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Developed Qini Shop - E-commerce platform similar to
+                      Alfagift and Klik Indomaret
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Experience 5 */}
+              <div className="relative flex items-start gap-8">
+                <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black" />
+                <div className="flex-1 bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
+                  <h3 className="text-xl font-bold text-pink-300 mb-2">
+                    Early Career Experience
+                  </h3>
+                  <h4 className="text-lg font-semibold">
+                    Junior Developer at House Of Aplysit
+                  </h4>
+                  <p className="text-gray-400 mb-4">June 2020–October 2020</p>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      Developed "Belanja Ikan" - Online fish marketplace
+                      platform
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Education 2 */}
+              <div className="relative flex items-start gap-8">
+                <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black" />
+                <div className="flex-1 bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
+                  <h3 className="text-xl font-bold text-purple-300 mb-2">
+                    Education
+                  </h3>
+                  <h4 className="text-lg font-semibold mb-2">
+                    SMKN 3 Banjar - Vocational High School
+                  </h4>
+                  <p className="text-gray-400 mb-4">
+                    2017–2020 (Information Technology Major)
+                  </p>
+                  <ul className="space-y-2 text-gray-300">
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      <span className="font-medium text-yellow-400">
+                        🏆 City Champion
+                      </span>{" "}
+                      - IT Software Solutions for Business Competition
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      <span className="font-medium text-yellow-400">
+                        🥉 Provincial Finalist
+                      </span>{" "}
+                      - IT Software Solutions for Business Competition
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                      <span className="font-medium text-green-400">
+                        👑 Squad Leader
+                      </span>{" "}
+                      - Pioneer Scout Organization (Pramuka)
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -620,20 +951,11 @@ const App: React.FC = () => {
                 © 2025 All rights reserved
               </div>
             </div>
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors underline"
-              >
-                Download CV
-              </a>
-              <span className="text-gray-600">|</span>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors underline"
-              >
-                Source Code
-              </a>
+            <div className="flex flex-col md:flex-row items-center gap-4">
+              <div className="text-gray-400 text-sm">
+                Powered by Claude AI, Vite, and React (TypeScript). Hosted on
+                GitHub Pages.
+              </div>
             </div>
           </div>
         </div>
