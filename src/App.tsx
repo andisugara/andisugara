@@ -35,15 +35,6 @@ import {
   SiWhatsapp,
 } from "react-icons/si";
 
-interface Project {
-  name: string;
-  desc: string;
-  stack: string[];
-  link: string;
-  img: string;
-  featured?: boolean;
-}
-
 const skills = {
   technical: [
     { name: "React", color: "from-blue-400 to-cyan-400", icon: <SiReact /> },
