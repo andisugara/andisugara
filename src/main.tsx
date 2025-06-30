@@ -7,7 +7,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Router basename="/your-repo-name">
+    <Router basename="/">
       {" "}
       {/* Replace with your actual GitHub repo name */}
       <Routes>
