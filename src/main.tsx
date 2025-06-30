@@ -1,18 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import App from "./App.tsx";
-import JokiTugas from "./JokiTugas.tsx";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import "./index.css";
+import App from "./App.tsx";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Router basename="/">
-      {/* Replace with your actual GitHub repo name */}
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/joki-tugas" element={<JokiTugas />} />
-      </Routes>
-    </Router>
-  </React.StrictMode>
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
 );
