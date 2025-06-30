@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Logo from "./assets/joki/logo.png";
 import {
   ArrowLeft,
   CheckCircle,
@@ -29,7 +30,7 @@ const schoolServices = [
   {
     icon: <BookOpen className="w-6 h-6" />,
     name: "PR Harian",
-    description: "Menjawab soal harian semua mapel (non-matematika)",
+    description: "Menjawab soal harian semua mapel",
     duration: "Reg: 1 hari / Exp: 5 jam",
     price: "10k / 15k",
     category: "daily",
@@ -37,8 +38,8 @@ const schoolServices = [
   },
   {
     icon: <FileText className="w-6 h-6" />,
-    name: "Makalah Mini",
-    description: "< 5 halaman",
+    name: "Makalah Mini ",
+    description: "< 7 hlm (sudah termasuk Cover)",
     duration: "Reg: 2 hari / Exp: 1 hari",
     price: "15k / 20k",
     category: "paper",
@@ -47,7 +48,7 @@ const schoolServices = [
   {
     icon: <FileText className="w-6 h-6" />,
     name: "Makalah Umum",
-    description: "> 5 hlm & < 15 hlm",
+    description: "> 7 hlm (sudah termasuk Cover)",
     duration: "Reg: 2 hari / Exp: 1 hari",
     price: "25k / 30k",
     category: "paper",
@@ -75,7 +76,7 @@ const schoolServices = [
     icon: <PenTool className="w-6 h-6" />,
     name: "Karya Kreatif",
     description: "Puisi, cerpen, pantun, narasi, dll.",
-    duration: "-",
+    duration: "1-2  hari",
     price: "10k – 40k",
     category: "creative",
     featured: false,
@@ -113,7 +114,7 @@ const collegeServices = [
   {
     icon: <FileText className="w-6 h-6" />,
     name: "Makalah Akademik",
-    description: "< 10 halaman / > 10 halaman",
+    description: "sudah termasuk Cover",
     duration: "Reg: 2–4 hari",
     price: "40k / 70k",
     category: "paper",
@@ -140,7 +141,7 @@ const collegeServices = [
   {
     icon: <Award className="w-6 h-6" />,
     name: "Artikel Ilmiah",
-    description: "Artikel 5–10 halaman (tanpa revisi dosen)",
+    description: "Artikel 3–10 halaman (tanpa revisi dosen)",
     duration: "3–4 hari",
     price: "200k – 300k",
     category: "academic",
@@ -154,6 +155,39 @@ const collegeServices = [
     price: "40k – 65k",
     category: "design",
     featured: false,
+  },
+];
+
+const generalServices = [
+  {
+    icon: <PenTool className="w-6 h-6" />,
+    name: "Menjawab Survey Responden",
+    description:
+      "Membantu menjawab survey dengan akurasi tinggi. Harga disesuaikan dengan jumlah responden dan kompleksitas survey.",
+    duration: "1–7 hari",
+    price: "Mulai dari 50k",
+    category: "survey",
+    featured: false,
+  },
+  {
+    icon: <FileText className="w-6 h-6" />,
+    name: "Data Entry",
+    description:
+      "Input data ke sistem atau spreadsheet dengan cepat. Harga tergantung jumlah data dan kompleksitas.",
+    duration: "1–7 hari",
+    price: "Mulai dari 50k",
+    category: "data-entry",
+    featured: false,
+  },
+  {
+    icon: <BookOpen className="w-6 h-6" />,
+    name: "Technical Writer",
+    description:
+      "Penulisan dokumen teknis, panduan, atau artikel. Harga disesuaikan dengan panjang dan kompleksitas dokumen.",
+    duration: "3–7 hari",
+    price: "Harga mulai dari 10K",
+    category: "writing",
+    featured: true,
   },
 ];
 
@@ -186,14 +220,14 @@ const features = [
 
 const testimonials = [
   {
-    name: "Sarah M.",
-    role: "Mahasiswa Teknik",
+    name: "Hanifa",
+    role: "Mahasiswa S2",
     message:
       "Sangat membantu untuk tugas-tugas kuliah yang menumpuk. Kualitas bagus dan tepat waktu!",
     rating: 5,
   },
   {
-    name: "Budi K.",
+    name: "Ardika",
     role: "SMA Kelas 12",
     message:
       "PPT untuk presentasi ujian sekolah hasilnya sangat memuaskan. Terima kasih!",
@@ -212,7 +246,9 @@ const JokiTugas: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisibleScrollTop, setIsVisibleScrollTop] = useState(false);
-  const [activeTab, setActiveTab] = useState<"school" | "college">("school");
+  const [activeTab, setActiveTab] = useState<"school" | "college" | "general">(
+    "school"
+  );
 
   useEffect(() => {
     setIsVisible(true);
@@ -245,7 +281,11 @@ const JokiTugas: React.FC = () => {
   };
 
   const currentServices =
-    activeTab === "school" ? schoolServices : collegeServices;
+    activeTab === "school"
+      ? schoolServices
+      : activeTab === "college"
+      ? collegeServices
+      : generalServices;
 
   return (
     <main className="bg-black text-white font-sans leading-relaxed overflow-x-hidden">
@@ -267,11 +307,11 @@ const JokiTugas: React.FC = () => {
             className="flex items-center gap-3 text-white hover:text-purple-300 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span className="font-semibold">Kembali ke Portfolio</span>
+            <span className="font-semibold">Personal Portfolio</span>
           </Link>
           <div className="flex items-center gap-4">
             <a
-              href="https://wa.me/6282240356763?text=Hi%20Andi%2C%20saya%20tertarik%20dengan%20jasa%20joki%20tugas."
+              href="https://wa.me/6285846106063?text=Hi%20Mimin Joki Tugas%2C%20saya%20ingin%20pesan%20layanan%20JokiTugas%20sekarang."
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center gap-2"
@@ -302,7 +342,7 @@ const JokiTugas: React.FC = () => {
         >
           <div className="mb-6">
             <div className="inline-block p-4 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm border border-white/10 mb-6">
-              <GraduationCap className="w-8 h-8 text-purple-400" />
+              <img src={Logo} alt="Logo" className="w-42 h-42 rounded-full" />
             </div>
           </div>
 
@@ -319,13 +359,13 @@ const JokiTugas: React.FC = () => {
 
           <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed">
             Jasa pengerjaan tugas profesional untuk siswa SD-SMA dan mahasiswa
-            S1-S2. Kualitas terjamin, harga terjangkau, dan pengerjaan tepat
+            S1 & Umum. Kualitas terjamin, harga terjangkau, dan pengerjaan tepat
             waktu.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <a
-              href="https://wa.me/6282240356763?text=Hi%20Andi%2C%20saya%20tertarik%20dengan%20jasa%20joki%20tugas."
+              href="https://wa.me/6285846106063?text=Hi%20Mimin Joki Tugas%2C%20saya%20tertarik%20dengan%20jasa%20joki%20tugas."
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25"
@@ -435,7 +475,17 @@ const JokiTugas: React.FC = () => {
                     : "text-gray-400 hover:text-white"
                 }`}
               >
-                Kuliah (S1-S2)
+                Kuliah
+              </button>
+              <button
+                onClick={() => setActiveTab("general")}
+                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300  ${
+                  activeTab === "general"
+                    ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                Umum
               </button>
             </div>
           </div>
@@ -494,7 +544,7 @@ const JokiTugas: React.FC = () => {
                 </div>
 
                 <a
-                  href={`https://wa.me/6282240356763?text=Hi%20Andi%2C%20saya%20ingin%20order%20${service.name}%20-%20${service.description}`}
+                  href={`https://wa.me/6285846106063?text=Hi%20Andi%2C%20saya%20ingin%20order%20${service.name}%20-%20${service.description}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-semibold py-3 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/25 flex items-center justify-center gap-2"
@@ -574,7 +624,7 @@ const JokiTugas: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/6282240356763?text=Hi%20Andi%2C%20saya%20ingin%20konsultasi%20tentang%20jasa%20joki%20tugas."
+                href="https://wa.me/6285846106063?text=Halo%20Mimin Joki Tugas%2C%20saya%20ingin%20konsultasi%20gratis%20terkait%20layanan%20JokiTugas."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25"
@@ -586,7 +636,7 @@ const JokiTugas: React.FC = () => {
                 </span>
               </a>
               <a
-                href="https://wa.me/6282240356763?text=Hi%20Andi%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20layanan%20joki%20tugas."
+                href="https://wa.me/6285846106063?text=Hai%20Mimin Joki Tugas%2C%20saya%20ingin%20bertanya%20dan%20diskusi%20tentang%20layanan%20JokiTugas."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group border-2 border-white/20 hover:border-white/40 backdrop-blur-sm font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/5"
