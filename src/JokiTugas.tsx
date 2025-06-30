@@ -11,7 +11,6 @@ import {
   PenTool,
   Image,
   BookOpen,
-  GraduationCap,
   Star,
   Shield,
   Zap,
