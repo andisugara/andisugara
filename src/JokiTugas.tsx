@@ -310,7 +310,7 @@ const JokiTugas: React.FC = () => {
           </Link>
           <div className="flex items-center gap-4">
             <a
-              href="https://wa.me/6285846106063?text=Hi%20Mimin Joki Tugas%2C%20saya%20ingin%20pesan%20layanan%20JokiTugas%20sekarang."
+              href="https://wa.me/6285846106063?text=Hi%20Mimin Konsul Tugas%2C%20saya%20ingin%20pesan%20layanan%20JokiTugas%20sekarang."
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center gap-2"
@@ -346,7 +346,7 @@ const JokiTugas: React.FC = () => {
           </div>
 
           <h1 className="text-6xl md:text-7xl font-black tracking-tight bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent mb-4">
-            Joki Tugas
+            Konsul Tugas
           </h1>
 
           <div className="flex items-center justify-center gap-2 mb-6">
@@ -364,7 +364,7 @@ const JokiTugas: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <a
-              href="https://wa.me/6285846106063?text=Hi%20Mimin Joki Tugas%2C%20saya%20tertarik%20dengan%20jasa%20joki%20tugas."
+              href="https://wa.me/6285846106063?text=Hi%20Mimin Konsul Tugas%2C%20saya%20tertarik%20dengan%20jasa%20joki%20tugas."
               target="_blank"
               rel="noopener noreferrer"
               className="group bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25"
@@ -623,7 +623,7 @@ const JokiTugas: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/6285846106063?text=Halo%20Mimin Joki Tugas%2C%20saya%20ingin%20konsultasi%20gratis%20terkait%20layanan%20JokiTugas."
+                href="https://wa.me/6285846106063?text=Halo%20Mimin Konsul Tugas%2C%20saya%20ingin%20konsultasi%20gratis%20terkait%20layanan%20JokiTugas."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25"
@@ -635,7 +635,7 @@ const JokiTugas: React.FC = () => {
                 </span>
               </a>
               <a
-                href="https://wa.me/6285846106063?text=Hai%20Mimin Joki Tugas%2C%20saya%20ingin%20bertanya%20dan%20diskusi%20tentang%20layanan%20JokiTugas."
+                href="https://wa.me/6285846106063?text=Hai%20Mimin Konsul Tugas%2C%20saya%20ingin%20bertanya%20dan%20diskusi%20tentang%20layanan%20JokiTugas."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group border-2 border-white/20 hover:border-white/40 backdrop-blur-sm font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/5"

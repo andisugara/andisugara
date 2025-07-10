@@ -6,6 +6,7 @@ import penerapanMl from "./assets/penerapan_ml.jpg";
 import flutterTravelApp from "./assets/flutter_travel_app.jpg";
 import flutterModernUI from "./assets/flutter_modern_ui.png";
 import reactNativeFullstack from "./assets/react_native.jpg";
+import cvAndiSugara from "./assets/CV-Andi-Sugara.pdf";
 import {
   Github,
   Linkedin,
@@ -90,25 +91,25 @@ const projects = [
   {
     name: "Ministry Portal Management System",
     desc: "Developed a sophisticated management portal for the Indonesian Ministry of Foreign Affairs, facilitating efficient document processing and administrative workflows for diplomatic operations.",
-    stack: ["React", "TypeScript", "Material-UI", "Express.js", "MongoDB"],
-    link: "#", // Internal project - no public link
+    stack: ["Vue", "Typescript", "Tailwind", "Node.js"],
+    link: "https://kemlu.go.id", // Replace with actual link if available
     img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop",
     featured: true,
     company: "Kabayan Consulting",
     role: "Frontend Developer",
-    status: "Internal Project",
+    status: "Live Project",
     year: "2023",
   },
   {
     name: "Ilmate Management Portal",
     desc: "Built a comprehensive management platform designed to streamline organizational processes and enhance operational efficiency through intuitive user interfaces and robust backend integration.",
-    stack: ["React", "Redux", "Tailwind CSS", "Node.js", "MySQL"],
-    link: "#", // Internal project - no public link
+    stack: ["Vue", "Typescript", "Tailwind", "Node.js"],
+    link: "https://ilmate.kemenperin.go.id", // Replace with actual link if available
     img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop",
     featured: false,
     company: "Kabayan Consulting",
     role: "Frontend Developer",
-    status: "Internal Project",
+    status: "Live Project",
     year: "2023",
   },
   {
@@ -126,7 +127,7 @@ const projects = [
   {
     name: "Assessment Center Platform",
     desc: "Confidential assessment and evaluation system designed for organizational talent management. Features comprehensive reporting and analytics capabilities.",
-    stack: ["React", "Node.js", "Database", "Analytics"],
+    stack: ["PHP", "Laravel", "PostgreSQL", "Bootstrap", "WebSocket"],
     link: "#",
     img: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=200&fit=crop",
     featured: false,
@@ -174,7 +175,7 @@ const projects = [
   {
     name: "Greeny App",
     desc: "Built an environmental waste management solution to promote sustainable practices and efficient waste tracking.",
-    stack: ["React Native", "Node.js", "MongoDB"],
+    stack: ["Kotlin", "Android", "Firebase", "MySQL"],
     link: "#", // Internal project - no public link
     img: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=400&h=200&fit=crop",
     featured: false,
@@ -189,6 +190,11 @@ const App: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisibleScrollTop, setIsVisibleScrollTop] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -218,6 +224,50 @@ const App: React.FC = () => {
       behavior: "smooth",
     });
     setIsVisibleScrollTop(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !email || !message) {
+      setStatus("Please fill in all fields.");
+      return;
+    }
+    setIsLoading(true);
+
+    const botToken = "7989932088:AAFiBerJ8SizVpTuZ02wXTf7eXAheY7JoHw"; // Ganti dengan token bot Telegram Anda
+    const chatId = "1379884449"; // Ganti dengan ID chat Telegram Anda
+    const telegramApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    const text = `New Message from Portfolio:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+
+    try {
+      const response = await fetch(telegramApiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("Message sent successfully!");
+        setName("");
+        setEmail("");
+        setMessage("");
+      } else {
+        setStatus("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setStatus("An error occurred. Please try again.");
+    }
+    setIsLoading(false);
+    setTimeout(() => {
+      setStatus("");
+    }, 3000);
   };
 
   return (
@@ -283,15 +333,18 @@ const App: React.FC = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </a>
-            <button className="group border-2 border-white/20 hover:border-white/40 backdrop-blur-sm font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/5">
+            <a
+              href={cvAndiSugara}
+              download="CV-Andi-Sugara.pdf"
+              className="group border-2 border-white/20 hover:border-white/40 backdrop-blur-sm font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/5"
+            >
               <span className="flex items-center gap-2">
                 <Download className="w-4 h-4" />
                 Download CV
               </span>
-            </button>
+            </a>
           </div>
-
-          <div className="flex gap-6">
+          <div className="flex gap-2">
             {[
               {
                 icon: <Github className="w-7 h-7" />,
@@ -861,18 +914,22 @@ const App: React.FC = () => {
                 <Mail className="w-6 h-6 text-purple-400" />
                 Get in Touch
               </h3>
-              <div className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="group">
                   <input
                     type="text"
                     placeholder="Your Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     className="w-full p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl focus:outline-none focus:border-purple-400 focus:bg-white/10 transition-all duration-300 placeholder-gray-400"
                   />
                 </div>
                 <div className="group">
                   <input
                     type="email"
+                    value={email}
                     placeholder="Your Email"
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl focus:outline-none focus:border-purple-400 focus:bg-white/10 transition-all duration-300 placeholder-gray-400"
                   />
                 </div>
@@ -880,13 +937,43 @@ const App: React.FC = () => {
                   <textarea
                     placeholder="Your Message"
                     rows={5}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     className="w-full p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl focus:outline-none focus:border-purple-400 focus:bg-white/10 transition-all duration-300 placeholder-gray-400 resize-none"
                   />
                 </div>
-                <button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold py-4 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/25">
-                  Send Message
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold py-4 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/25 flex items-center justify-center"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      ></path>
+                    </svg>
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
-              </div>
+              </form>
+              {status != "" && <p className="mt-4 text-sm">{status}</p>}
             </div>
 
             <div className="space-y-8">
